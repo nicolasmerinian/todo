@@ -13,9 +13,19 @@ let emptyList = (listElement) => {
 
 let makeList = (todos, listElement) => {
   let itemElement;
+  let contentElement;
+  let deleteElement;
   todos.forEach((todo) => {
     itemElement = document.createElement('li');
-    itemElement.textContent = todo.text;
+    contentElement = document.createElement('span');
+    deleteElement = document.createElement('span');
+
+    contentElement.textContent = todo.text;
+    deleteElement.className += '  delete';
+    deleteElement.textContent = 'X';
+
+    itemElement.appendChild(contentElement);
+    itemElement.appendChild(deleteElement);
     listElement.appendChild(itemElement);
   });
 };
