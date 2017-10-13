@@ -39,7 +39,7 @@ let emptyElement = (element) => {
 let addButtonHandler = (e, todos, listElement) => {
   e.stopPropagation();
 
-  let inputElement = document.querySelector('.addTodo input');
+  let inputElement = document.querySelector('.todo__add-input');
 
   if (inputElement.value.trim() === '') {
     return;
@@ -63,8 +63,8 @@ let addTodo = (todos, todoText) => {
     { text: 'My first todo' }
   ];
 
-  let listElement = document.querySelector('.list');
-  let buttonElement = document.querySelector('.addTodo button');
+  let listElement = document.querySelector('.todo__list');
+  let buttonElement = document.querySelector('.todo__add-button');
 
   buttonElement.addEventListener('click', (e) => {
     addButtonHandler(e, TODOS, listElement);
