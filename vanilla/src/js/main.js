@@ -42,9 +42,7 @@ let addButtonHandler = (e, todos, listElement) => {
 };
 
 let addTodo = (todos, todoText) => {
-  let newTodo = {
-    text: todoText
-  };
+  let newTodo = new Todo(todoText);
   todos.push(newTodo);
 };
 
