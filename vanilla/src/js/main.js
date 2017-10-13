@@ -20,6 +20,30 @@ let makeList = (todos, listElement) => {
   });
 };
 
+let emptyElement = (element) => {
+  if (element && element.value) {
+    element.value = '';
+  }
+};
+
+let addButtonHandler = (e, todos, listElement) => {
+  e.stopPropagation();
+
+  let inputElement = document.querySelector('.addTodo input');
+
+  addTodo(todos, inputElement.value);
+
+  emptyElement(inputElement);
+  displayList(todos, listElement);
+};
+
+let addTodo = (todos, todoText) => {
+  let newTodo = {
+    text: todoText
+  };
+  todos.push(newTodo);
+};
+
 (function() {
   console.log('ready');
 
@@ -27,19 +51,13 @@ let makeList = (todos, listElement) => {
     { text: 'My first todo' }
   ];
 
-  displayList(TODOS, document.querySelector('.list'));
+  let listElement = document.querySelector('.list');
+  let buttonElement = document.querySelector('.addTodo button');
 
-  document.querySelector('.addTodo button')
-      .addEventListener('click', (e) => {
-    e.stopPropagation();
-    let inputElement = document.querySelector('.addTodo input');
-
-    let newTodo = {
-      text: inputElement.value
-    };
-    TODOS.push(newTodo);window.eee=e;
-
-    inputElement.value = "";
-      displayList(TODOS, document.querySelector('.list'));
+  buttonElement.addEventListener('click', (e) => {
+    addButtonHandler(e, TODOS, listElement);
   }, false);
+
+  displayList(TODOS, listElement);
+
 })();
