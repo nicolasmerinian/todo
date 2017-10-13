@@ -32,13 +32,14 @@ let makeList = (todos, listElement) => {
   document.querySelector('.addTodo button')
       .addEventListener('click', (e) => {
     e.stopPropagation();
+    let inputElement = document.querySelector('.addTodo input');
 
     let newTodo = {
-      text: document.querySelector('.addTodo input').value
+      text: inputElement.value
     };
-    TODOS.push(newTodo);
+    TODOS.push(newTodo);window.eee=e;
 
-    e.currentTarget.value = "";
+    inputElement.value = "";
       displayList(TODOS, document.querySelector('.list'));
   }, false);
 })();
