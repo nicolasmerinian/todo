@@ -31,6 +31,10 @@ let addButtonHandler = (e, todos, listElement) => {
 
   let inputElement = document.querySelector('.addTodo input');
 
+  if (inputElement.value.trim() === '') {
+    return;
+  }
+
   addTodo(todos, inputElement.value);
 
   emptyElement(inputElement);
